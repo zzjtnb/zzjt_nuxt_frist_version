@@ -98,11 +98,6 @@ export default {
     '@nuxtjs/dotenv',
     // Simple usage
     'cookie-universal-nuxt',
-
-    // With options
-    ['cookie-universal-nuxt', {
-      alias: 'cookiz'
-    }],
   ],
   bootstrapVue: {
     bootstrapCSS: false, // Or `css: false`

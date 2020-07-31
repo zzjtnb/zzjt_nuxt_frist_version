@@ -35,6 +35,10 @@ export default {
 			}).then((res) => {
 				// console.log(res);
 				if (res.status == 200) {
+					this.$cookies.set("TOKEN_KEY", this.form.token, {
+						path: "/",
+						maxAge: 60 * 60 * 24 * 7,
+					});
 					this.$store.commit("token/SET_TOKEN", this.form.token);
 				}
 			});

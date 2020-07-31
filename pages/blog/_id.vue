@@ -36,7 +36,6 @@
 <script >
 import Tools from "../../components/Tools";
 export default {
-	//使用middleware引入中间件
 	middleware: ["cookie"],
 	data() {
 		return {

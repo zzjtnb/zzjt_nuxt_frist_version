@@ -1,11 +1,10 @@
 <!--  -->
 <template>
 	<div class="tools">
-		{{tips}}
 		<b-button @click="$share('/blog/details/'+id)" style="padding: 3px 0">分享</b-button>
 		<b-button @click="editBlog(index)" style="padding: 3px 0" v-if="token">编辑</b-button>
 		<b-button @click="deleteGists(index)" style="padding: 3px 0" v-if="token">删除</b-button>
-		{{token}}
+		<!-- {{id,index}} -->
 	</div>
 </template>
 
@@ -18,20 +17,19 @@ export default {
 	data() {
 		return {
 			token: this.$store.state.token.token,
-			tips: "我是提示",
 		};
 	},
 	mounted() {},
 	methods: {
 		editBlog(index) {
-			// if (!this.token) {
-			// 	this.$message({
-			// 		message: "请绑定有效的Token",
-			// 		type: "warning",
-			// 	});
-			// 	return;
-			// }
-			// this.$router.push("/blog/edit/" + this.blogs[index].id);
+			if (!this.token) {
+				this.$message({
+					message: "请绑定有效的Token",
+					type: "warning",
+				});
+				return;
+			}
+			this.$router.push("/blog/edit/" + this.id);
 		},
 		// deleteGists(index) {
 		// 	console.log(index);
