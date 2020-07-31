@@ -96,11 +96,18 @@ export default {
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
+    // Simple usage
+    'cookie-universal-nuxt',
+
+    // With options
+    ['cookie-universal-nuxt', {
+      alias: 'cookiz'
+    }],
   ],
   bootstrapVue: {
     bootstrapCSS: false, // Or `css: false`
     bootstrapVueCSS: false, // Or `bvCSS: false`
-    componentPlugins: ['LayoutPlugin', 'NavbarPlugin', 'FormInputPlugin', 'ButtonPlugin', 'OverlayPlugin', 'ToastPlugin', 'CardPlugin', 'PaginationNavPlugin'],
+    componentPlugins: ['LayoutPlugin', 'NavbarPlugin', 'ButtonPlugin', 'OverlayPlugin', 'ToastPlugin', 'CardPlugin', 'PaginationNavPlugin', 'FormPlugin', 'FormGroupPlugin', 'FormInputPlugin', ],
   },
   /*
    ** Style resources

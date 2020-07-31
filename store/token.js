@@ -1,8 +1,9 @@
 import Cookie from '../utils/cookie'
+
 const TOKEN_KEY = "TOKEN_KEY"
 
 export const state = () => ({
-  token: Cookie.getAttribute(TOKEN_KEY)
+  token: '' || Cookie.getAttribute(TOKEN_KEY)
 })
 export const mutations = {
   SET_TOKEN: (state, value) => {
@@ -15,6 +16,17 @@ export const mutations = {
   }
 }
 export const actions = {
+  // nuxtServerInit is called by Nuxt.js before server-rendering every page
+  nuxtServerInit({
+    commit
+  }, {
+    app
+  }) {
+    // console.log(app);
+    // if (req.session && req.session.authUser) {
+    //   commit('SET_USER', req.session.authUser)
+    // }
+  },
   Authentication({
     commit
   }, accessToken) {

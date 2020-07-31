@@ -32,7 +32,7 @@
 							<template v-slot:button-content>
 								<em>用户</em>
 							</template>
-							<b-dropdown-item to="/user/logon" exact exact-active-class="active">登录</b-dropdown-item>
+							<b-dropdown-item to="/user/login" exact exact-active-class="active">登录</b-dropdown-item>
 							<b-dropdown-item to="/user/register" exact exact-active-class="active">注册</b-dropdown-item>
 						</b-nav-item-dropdown>
 					</b-navbar-nav>
@@ -48,13 +48,13 @@ export default {
 		return {
 			isFixed: "top",
 			top_nav_collapse: false,
-			path: this.$route.path
+			path: this.$route.path,
 		};
 	},
 	watch: {
-		$route: function(val, oldVal) {
+		$route: function (val, oldVal) {
 			// console.log("new: %s, old: %s", val.path, oldVal.path);
-		}
+		},
 	},
 	mounted() {
 		// console.log(this.$store.state.common.isNotIndex);
@@ -73,13 +73,13 @@ export default {
 			} else {
 				this.top_nav_collapse = false;
 			}
-		}
+		},
 	},
 	components: {},
 	//由于是在整个window中添加的事件，所以要在页面离开时摧毁掉，否则会报错
 	beforeDestroy() {
 		window.removeEventListener("scroll", this.handleScroll);
-	}
+	},
 };
 </script>
 

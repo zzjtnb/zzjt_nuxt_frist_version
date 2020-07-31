@@ -5,12 +5,21 @@
 			<b-card-group v-for="(item,index) in blogList.blogs" :key="index">
 				<b-card no-body class="shadow m-1">
 					<div class="card img-fluid" @click="goDetails(item.id)">
-						<b-card-img-lazy src="http://static.blinkfox.com/20181124-design.jpg" blankColor="#bbb" style="opacity:1;"></b-card-img-lazy>
+						<b-card-img-lazy src="http://static.blinkfox.com/20181124-design.jpg" blankColor="#bbb" style="opacity:1;max-width:450px;max-height:367px"></b-card-img-lazy>
 						<div class="card-img-overlay">
 							<b-card-title class="text-white mt-5">{{item.title}}</b-card-title>
+							<b-card-text class="text-light">{{item.description}}</b-card-text>
 						</div>
 					</div>
-					<b-card-text>{{item.description}}</b-card-text>
+					<div>
+						<div>
+							最近更新:
+							{{item.updateTime}}
+						</div>
+						<div>
+							<Tools :id="item.id" :index="index"></Tools>
+						</div>
+					</div>
 				</b-card>
 			</b-card-group>
 		</b-row>
@@ -25,13 +34,16 @@
 </template>
 
 <script >
+import Tools from "../../components/Tools";
 export default {
+	//使用middleware引入中间件
+	middleware: ["cookie"],
 	data() {
 		return {
 			query: {
 				pageNum: 1,
-				per_page: 16
-			}
+				per_page: 16,
+			},
 		};
 	},
 	mounted() {
@@ -61,12 +73,15 @@ export default {
 				path: `/blog/${pageNum}`,
 				// query: { query: this.query },
 				name: "blog-id",
-				params: { id: pageNum, per_page: 16 }
+				params: { id: pageNum, per_page: 16 },
 			};
-		}
+		},
+	},
+	components: {
+		Tools,
 	},
 	async asyncData({ app, params, query, store, route }) {
-		let blogList = await app.$axios.get(`/github/users/zzjtnb/gists?page=${params.id}&per_page=${params.per_page || 16}`).then(res => {
+		let blogList = await app.$axios.get(`/github/users/zzjtnb/gists?page=${params.id}&per_page=${params.per_page || 16}`).then((res) => {
 			let result = res.data;
 			let blogs = [];
 			for (let i = 0; i < result.length; i++) {
@@ -86,7 +101,7 @@ export default {
 			return { blogs };
 		});
 		return { blogList };
-	}
+	},
 };
 </script>
 
