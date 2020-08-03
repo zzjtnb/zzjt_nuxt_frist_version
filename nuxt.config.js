@@ -12,32 +12,32 @@ export default {
     title: '争逐',
     titleTemplate: '%s - ',
     meta: [{
-        charset: 'utf-8'
-      },
-      {
-        hid: 'Author',
-        name: 'Author',
-        content: '争逐'
-      },
-      {
-        hid: 'keywords',
-        name: 'keywords',
-        content: "Java,Vue,HTML,CSS,编程,博客,知识,系统,争逐,政治,经济,军事,历史,天文,地理,人文,哲学"
-      },
-      {
-        hid: 'description',
-        name: 'description',
-        content: '纵观天下之势,发展强国之道'
-      },
-      {
-        hid: 'Copyright',
-        name: 'Copyright',
-        content: '争逐版权所有'
-      },
-      {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1'
-      },
+      charset: 'utf-8'
+    },
+    {
+      hid: 'Author',
+      name: 'Author',
+      content: '争逐'
+    },
+    {
+      hid: 'keywords',
+      name: 'keywords',
+      content: "Java,Vue,HTML,CSS,编程,博客,知识,系统,争逐,政治,经济,军事,历史,天文,地理,人文,哲学"
+    },
+    {
+      hid: 'description',
+      name: 'description',
+      content: '纵观天下之势,发展强国之道'
+    },
+    {
+      hid: 'Copyright',
+      name: 'Copyright',
+      content: '争逐版权所有'
+    },
+    {
+      name: 'viewport',
+      content: 'width=device-width, initial-scale=1'
+    },
     ],
     link: [{
       rel: 'icon',
@@ -102,7 +102,7 @@ export default {
   bootstrapVue: {
     bootstrapCSS: false, // Or `css: false`
     bootstrapVueCSS: false, // Or `bvCSS: false`
-    componentPlugins: ['LayoutPlugin', 'NavbarPlugin', 'ButtonPlugin', 'OverlayPlugin', 'ToastPlugin', 'CardPlugin', 'PaginationNavPlugin', 'FormPlugin', 'FormGroupPlugin', 'FormInputPlugin', ],
+    componentPlugins: ['LayoutPlugin', 'NavbarPlugin', 'ButtonPlugin', 'OverlayPlugin', 'ToastPlugin', 'CardPlugin', 'PaginationNavPlugin', 'FormPlugin', 'FormGroupPlugin', 'FormInputPlugin',],
   },
   /*
    ** Style resources
@@ -134,9 +134,22 @@ export default {
     },
   },
   /*
+** Server Middleware
+*/
+  // serverMiddleware: {
+  //   '/api': '~/api'
+  // },
+  serverMiddleware: [
+
+    // Will register file from project api directory to handle /api/* requires
+    { path: '/api', handler: '~/api/index.js' },
+    // { path: '/dir', handler: '~/database/index.js' },
+    // We can create custom instances too
+    // { path: '/static2', handler: serveStatic(__dirname + '/static2') }
+  ],
+  /*
    ** Build configuration
    */
-
   build: {
     // analyze: true,
     // // transpile: [/^element-ui/],//同步配置
@@ -153,6 +166,6 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) { }
   }
 }

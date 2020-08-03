@@ -1,0 +1,28 @@
+import React from 'react'
+import { observer } from 'mobx-react'
+
+// 组件导入
+import Head from '../components/head'
+import Header from '../components/header'
+import Footer from '../components/footer'
+
+import '../styles/common.less'  // 通用样式
+
+@observer
+class <%componentName%> extends React.Component {
+  render() {
+    return (
+      <div className='article-container'>
+        <Head></Head>
+        <Header></Header>
+        <div className='article-body-container'>
+          <div className='article-detail-container'>
+            <%template%>
+          </div>
+        </div>
+        <Footer></Footer>
+      </div>
+    )
+  }
+}
+export default <%componentName%>
