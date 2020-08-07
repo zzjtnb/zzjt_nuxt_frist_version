@@ -63,6 +63,12 @@ export default {
     '@/assets/scss/reset.css'
   ],
   /*
+** Style resources
+*/
+  styleResources: {
+    scss: "./assets/scss/variables.scss"
+  },
+  /*
    ** Plugins to load before mounting the App
    */
   plugins: [
@@ -125,17 +131,17 @@ export default {
         '^/github': '', //将 /api 替换掉
       },
     },
-    '/frist': {
-      target: base.frist, // 代理地址
+    'first': {
+      target: base.first, // 代理地址
       changeOrigin: true,
       pathRewrite: {
-        '^/frist': '', //将 /api 替换掉
+        'first': '', //将 /api 替换掉
       },
     },
   },
   /*
-** Server Middleware
-*/
+  ** Server Middleware
+  */
   // serverMiddleware: {
   //   '/api': '~/api'
   // },
@@ -143,7 +149,7 @@ export default {
 
     // Will register file from project api directory to handle /api/* requires
     { path: '/api', handler: '~/api/index.js' },
-    // { path: '/dir', handler: '~/database/index.js' },
+    { path: '/dir', handler: '~/utils/files/dir.js' },
     // We can create custom instances too
     // { path: '/static2', handler: serveStatic(__dirname + '/static2') }
   ],
